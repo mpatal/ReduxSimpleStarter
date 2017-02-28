@@ -1,19 +1,28 @@
-import React from 'react';
+import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
+import YTSearch from 'youtube-api-search';
+import chalk from 'chalk';
 import SearchBar from './components/search_bar'; //files we write needs a relative path directory
+const API_KEY = 'AIzaSyBvW9Etj1HtlKwwWUoS_AsuqqjNiYdw_go';
 
-const API_KEY = 'AIzaSyBvW9Etj1HtlKwwWUoS_AsuqqjNiYdw_go'
+class App extends Component {
+    constructor(props) {
+        super(props);
 
-// Create a new component. This component should produce some HTML
-// on component for file
+        this.state = { videos: [] }
 
-//ES 6 const 
-const App = () => {
-    return  (
-        <div>
-            <SearchBar/>
-        </div> 
-    );
+        YTSearch({ key: API_KEY, term: 'surfboards' }, (videos) => {
+            this.setState({ videos });
+        });
+    }
+    render() {
+        return (
+            <div>
+                <SearchBar />
+            </div>
+        );
+    }
+
 }
 
 // Take this component's generate HTML and put it on the page (in the DOM)
