@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import YTSearch from 'youtube-api-search';
 import chalk from 'chalk';
 import SearchBar from './components/search_bar'; //files we write needs a relative path directory
+import VideoList from './components/video_list';
 const API_KEY = 'AIzaSyBvW9Etj1HtlKwwWUoS_AsuqqjNiYdw_go';
 
 class App extends Component {
@@ -19,6 +20,7 @@ class App extends Component {
         return (
             <div>
                 <SearchBar />
+                <VideoList videos={this.state.videos}/> 
             </div>
         );
     }
