@@ -11,16 +11,21 @@ class SearchBar extends Component {
         //must deefine render otherwise an error occurs
         //functional vs class based component
         return (
-            <div>
-                <input 
+            <div className="search-bar">
+                <input
                     value={this.state.term}
-                    onChange={event => this.setState({ term: event.target.value })} />
+                    onChange={event => this.onInputChange(event.target.value)} />
             </div>
         );
     }
 
+    onInputChange(term) {
+        this.setState({ term });
+        this.props.onSearchTermChange(term);
+    }
 
 }
 
 export default SearchBar; //es6 ability to export from a silo everything in es6 class is private unless exported
+
 
